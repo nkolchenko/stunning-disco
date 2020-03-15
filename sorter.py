@@ -1,19 +1,22 @@
 import os
+
 #get current dir
 #cwd=os.getcwd()
-cwd='/var/tmp/trash'  # that's the playgarden
+
+cwd='/var/tmp/trash'  # that's the playgarden directory
 
 #file types associations
+
 mus=['.mp3', '.waw']
 vid=['.mp4', '.avi']
 doc=['.txt', '.pdf']
 
-#list all the filetypes in playgarden dir
+#listing all the file extensions in playgarden directory
 
 lof=os.listdir(cwd)
 print("list of files in dir: " + str(lof))
 
-list_ext=[]   #list of extensions found
+list_ext=[]   #list of file extensions found
 
 for filename in lof:
     s = filename.split('.')
@@ -22,13 +25,14 @@ for filename in lof:
 
 list_ext.sort()
 #print(list_ext)
-c=set(list_ext)  #converted list to set to DEDUP and for further usage
+c=set(list_ext)  #converting it to the set for DEDUP and further usage
 
 print("filetypes found [c]: "+str(c))
 
-# check which subdirs to be created if not exist
+# check which sub-dirs are to be created if they not exist
 
-fa={"Music": mus,"Videos":vid,"Documents":doc}
+#fa={ft, ft, ft}
+fa={"Music": mus, "Videos": vid, "Documents": doc}
 
 tbd=[]
 
@@ -46,9 +50,9 @@ for ft in fa:
         #print(ft)
         i=i+1
 
-tbc=set(tbd)        # dedup set of dirs to be created
+tbc=set(tbd)        # deduplicated set of directories to be created
 print("Dirs to be created: " + str(tbc))
 
-# TBD create dirs and move files there
+# TBD create dirs (if they don't exist) and move files there (idempotent operation)
 for i in tbc:
     print(cwd+"/"+i)
