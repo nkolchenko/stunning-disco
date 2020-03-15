@@ -1,64 +1,54 @@
 import os
 #get current dir
 #cwd=os.getcwd()
-cwd='/tmp/trash'
+cwd='/var/tmp/trash'  # that's the playgarden
 
-#list all the filetypes in it
+#file types associations
+mus=['.mp3', '.waw']
+vid=['.mp4', '.avi']
+doc=['.txt', '.pdf']
+
+#list all the filetypes in playgarden dir
+
 lof=os.listdir(cwd)
 print("list of files in dir: " + str(lof))
-b=[]
 
-for filename in lof :
-    s=filename.split('.')
-    ext=s[-1]
-    b.append(ext)
-    #print(b)
+list_ext=[]   #list of extensions found
 
-#b.sort()
-c=set(b)
+for filename in lof:
+    s = filename.split('.')
+    ext = s[-1]
+    list_ext.append("." + ext)
 
-print("filetypes set: "+str(c))
+list_ext.sort()
+#print(list_ext)
+c=set(list_ext)  #converted list to set to DEDUP and for further usage
+
+print("filetypes found [c]: "+str(c))
 
 # check which subdirs to be created if not exist
 
-subpath='ololo'
-newdir=cwd+subpath
-#print(newdir)
+fa={"Music": mus,"Videos":vid,"Documents":doc}
 
-#redo for lists
-if subpath not in lof:
-    print("NotIn")
-else:
-    print("got it")
+tbd=[]
 
-#os.mkdir(newdir)
+for ft in fa:
+    i=0
+    while i < len(fa[ft]):
+        #print("cycle: "+ft)
+        #print(fa[ft][i])
+        if fa[ft][i] in c :
+            print(str(fa[ft][i]) + " is in: " + str(c) + " " + ft + " dir to be created")
+            tbd.append(ft)
+        else:
+            None    # just a placeholder
+            #print(str(fa[ft][i]) + " is NOT in: " + str(c))
+        #print(ft)
+        i=i+1
 
+tbc=set(tbd)        # dedup set of dirs to be created
+print("Dirs to be created: " + str(tbc))
 
-'''
-basedir=
-
-for path in
-
-os.makedirs(path)
-
-basepath = sys.argv[1]
-for entry in os.listdir(basepath):
-    s = entry.split('.')
-    ext = s[-1]
-    if os.path.isfile(os.path.join(basepath, entry)):
-        if len(s) <= 1:
-            print("skipping file ", entry)
-            continue
-
-        dirName = os.path.join(basepath, ext)
-        if not os.path.exists(dirName):
-            print("dir ", dirName, " doeas not exist; creating it")
-            # os.mkdir(dirName)
-        fromFile = os.path.join(basepath, entry)
-        toFile = os.path.join(dirName, entry)
-        print("moving ", fromFile, " to ", toFile)
-        # os.rename(fromFile, toFile)
-    else:
-        print(entry, " is not a file; skipping")
-        continue
-'''
+# TBD create dirs and move files there
+for i in tbc:
+    print(cwd+"/"+i)
