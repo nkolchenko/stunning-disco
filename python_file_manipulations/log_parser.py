@@ -20,3 +20,4 @@ with open(logz, "r") as f:  # List of log lines
     answer = b[0]
 
     print(answer)
+'
