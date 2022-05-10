@@ -7,6 +7,7 @@
 logz = './logz.txt'
 shortened_dict = []
 
+'''
 with open(logz, "r") as f:  # List of log lines
     log_lines = f.read().split('\n')  # ['200,John,/home,60ms', '200,Sarah,/log,13ms', '500,Jack,/home,40ms']
     for element in log_lines:
@@ -20,4 +21,13 @@ with open(logz, "r") as f:  # List of log lines
     answer = b[0]
 
     print(answer)
-'
+'''
+with open(logz,'r') as f:
+    log_lines=f.read().split('\n')
+    for a in log_lines:
+        values = a.split(',')
+        short = [values[1],values[3]]
+        print(short)
+        shortened_dict.append(short)
+        print(shortened_dict)
+    print( sorted(shortened_dict, key=lambda item: item[1])[0])

@@ -1,4 +1,4 @@
-# Given an array of arrays, flatten into a single array. Ex: [[1,2,3,4], [5,6],[7]]. Output [1,2,3,4,5,6,7].
+'''# Given an array of arrays, flatten into a single array. Ex: [[1,2,3,4], [5,6],[7]]. Output [1,2,3,4,5,6,7].
 from collections.abc import Iterable
 a=[[1,2,3,4], [5,6,7],[7,[8,[9,10,[11]]]]]
 z=[]
@@ -48,3 +48,8 @@ for sublist in a:
 
 print('Original List', a)
 print('Transformed Flat List', z)
+'''
+
+a="qwerty"
+for b in a:
+    print(b.capitalize())

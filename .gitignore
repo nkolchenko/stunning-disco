@@ -1,2 +1,3 @@
-./learn_boto/.idea/*
-./idea/*
+python/learn_boto/.idea/*
+.idea/*
+.idea
