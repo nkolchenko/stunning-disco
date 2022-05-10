@@ -25,4 +25,3 @@ while my_incr < len(my_list):
         my_incr = my_incr + 1
 
 print(my_dict)
-my_dict.
